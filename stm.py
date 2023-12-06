@@ -1,25 +1,47 @@
-class time():
+listaj = []
 
-class jogador():
-    def __init__(self, nome, time, estado_de_saude, desempenho)
-            self.nome = nome
-            self.time = time 
-            self.saude = estado de saude
+class Jogador:    
+    def __init__(self, nome, time, estado, desempenho): 
+        self.nome = nome
+        self.time = time 
+        self.saude = estado
+        self.desempenho = desempenho
 
+    def mudar_time(self, time):
+        self.time = time
 
-
-print("bem vindo ao TMA")   
-print('''selecione a opção:
-1 - verificar jogadores
-2 - adicionar jogador
-'''
-
-escolha = input
-
-if(escolha == 1)
+def novo_jogador():
+    nome = input("\nNome do jogador: ")
+    time = input("Time do jogador: ")
+    njogador = Jogador(nome, time, "saudavel", 0)
+    listaj.append(njogador)
 
 
-elif(escolha == 2)
-    
-else 
-    print("opção invalida")
+
+def inicio():
+    print("\nbem vindo ao STM\n")
+
+    print("selecione a opção:")
+    print("1 - verificar jogadores")
+    print("2 - adicionar jogador")
+    print("3 - encerrar")
+
+    escolha = input("sua opção: ")
+
+    if escolha == "1":
+        i = 0
+        i_max = len(listaj)
+        while listaj[i] != i_max:
+            print(listaj[i].nome)
+            i = i + 1
+        inicio()
+    elif escolha == "2":
+        novo_jogador()
+        inicio()
+    elif escolha == "3":
+        exit()
+    else:
+        print("opção inválida")
+        inicio()
+
+inicio()
