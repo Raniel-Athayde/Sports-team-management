@@ -76,6 +76,7 @@ def carregar_times():
     
 def vizualizar_jogador(jogador):
     while True:
+        limpar_terminal()
         print("Nome: " + jogador.nome)
         if jogador.estado:
             print("Estado: Apto a jogar")
@@ -83,7 +84,7 @@ def vizualizar_jogador(jogador):
             print("Estado: Inapto a jogar")
         print("Posição" + jogador.posicao)
         print("Selecione uma opção: ")
-        print(" 1 - Verificar ocorrencias")
+        print("1 - Verificar ocorrencias")
         print("2 - verificar desempenho")
         print("3 - voltar")
         escolha = input("Sua opção: ")
@@ -157,7 +158,7 @@ def vizualizar_time(time, lista):
         if escolha == "1":
             novo_jogador(time.jogadores)
 
-        if escolha == "2":
+        elif escolha == "2":
             ijogador = input("Insira o numero do jogador: ")
             vizualizar_jogador(time.jogadores[int(ijogador) - 1])
 
@@ -200,8 +201,8 @@ def vizualizar_time(time, lista):
                     time.em += 1
         elif escolha == "5":
             print("n° de vitorias: " + str(time.vict)) 
-            print(" n° de derrotas: " + str(time.derr))
-            print(" n° de empates: " + str(time.em))
+            print("n° de derrotas: " + str(time.derr))
+            print("n° de empates: " + str(time.em))
             total = time.vict + time.derr + time.em
             porcetagem = (time.vict / total) * 100
             print("resultado: " + str(time.vict) +"/" + str(total) + "(" +  str(porcetagem) + "%)\n")
@@ -238,11 +239,11 @@ def inicio():
             print("\nSeus times salvos são:\n")
             listar(listat)
             print("Secione a opção:\n")
-            print("1 - Vizualizar time\n")
+            print("1 - Vizualizar time")
             print("2 - Remover time")
             print("3 - Voltar\n")
             escolha2 = input("Sua opção: ")
-            
+
             if escolha2 == "1":
                 print("Qual time deseja vizualizar?")
                 escolha3 = input("Escreva o número do time: ")
