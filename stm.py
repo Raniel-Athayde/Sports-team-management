@@ -11,14 +11,12 @@ def limpar_terminal():
         os.system('clear')
 
 class Jogador:
-    def __init__(self, nome, ocorrencias, desempenho, posicao):
+    def __init__(self, nome, estado,  ocorrencias, desempenho, posicao):
         self.nome = nome
+        self.estado = estado
         self.ocorrencias = ocorrencias
         self.desempenho = desempenho
         self.posicao = posicao
-
-    def mudar_time(self, time):
-        self.time = time
 
     def mudar_nome(self, nome):
         self.nome = nome
@@ -26,9 +24,9 @@ class Jogador:
 def novo_jogador(lista_jogadores):
     nome = input("\nNome do jogador: ")
     ocorrencias = []
-    deesempenho = []
+    desempenho = []
     estado = True
-    njogador = Jogador(nome, estado, ocorrencias, deesempenho, "indefinida")
+    njogador = Jogador(nome, estado, ocorrencias, desempenho, "indefinida")
     lista_jogadores.append(njogador)
 
 class Time:
@@ -77,7 +75,65 @@ def carregar_times():
         return []
     
 def vizualizar_jogador(jogador):
-    print(jogador.nome)
+    while True:
+        print("Nome: " + jogador.nome)
+        if jogador.estado:
+            print("Estado: Apto a jogar")
+        else:
+            print("Estado: Inapto a jogar")
+        print("Posição" + jogador.posicao)
+        print("Selecione uma opção: ")
+        print(" 1 - Verificar ocorrencias")
+        print("2 - verificar desempenho")
+        print("3 - voltar")
+        escolha = input("Sua opção: ")
+        if escolha == "1":
+            listar(jogador.ocorrencias)
+            print("\n")
+            print("Selecione uma opção:")
+            print("1 - Adicionar ocorrencia")
+            print("2 - Remover ocorrencia")
+            print("3 - Voltar")
+            escolha2 = input("Sua opção: ")
+            if escolha2 == "1":
+                nocorrencia = input("Insira a ocorrencia")
+                jogador.ocorrencias.append(nocorrencia)
+            elif escolha2 == "2":
+                iocorrencia = input("Insira o número da ocorrencia que deseja remover: ")
+                del jogador.ocorrencias[int(iocorrencia) - 1]
+            elif escolha2 == "3":
+                pass
+            else:
+                print("Opção invalida")
+                input("Pressione ENTER para continuar")
+
+        elif escolha == "2":
+            listar(jogador.desempenho)
+            print("\n")
+            print("Selecione uma opção:")
+            print("1 - Adicionar desempenho em um jogo")
+            print("2 - Remover desempenho")
+            print("3 - Voltar")
+            escolha2 = input("Sua opção: ")
+            if escolha2 == "1":
+                ndesempenho = input("Insira a descrição")
+                jogador.desempenho.append(ndesempenho)
+            elif escolha2 == "2":
+                idesempenho = input("Insira o número da descrição que deseja remover: ")
+                del jogador.ocorrencias[int(idesempenho) - 1]
+            elif escolha2 == "3":
+                pass
+            else:
+                print("Opção invalida")
+                input("Pressione ENTER para continuar")
+
+        elif escolha == "3":
+            break
+
+        else:
+            print("Opção invalida")
+            input("pressione ENTER para continuar")
+
 
 
     
@@ -163,46 +219,6 @@ def vizualizar_time(time, lista):
             input("Aperte ENTER para continuar")
         
         salvar_times(lista)
-
-
-'''           
-def editar_jogador(lista_jogadores):
-    limpar_terminal()
-    print("Qual jogador deseja editar?")
-    listar(lista_jogadores)
-    i_jogador = input("Digite o número correspondente ao jogador:")
-    print("O que deseja fazer?")
-    print("1 - Mudar o nome")
-    print("2 - Adicionar ocorrencia")
-    print("3 - Deletar")
-    print("4 - Voltar")
-    acao = input("Sua opção: ")
-    
-    if acao == 1:
-        print("Nome atual:" + lista_jogadores[int(i_jogador) - 1].nome)
-        novo_nome = input("Escreva o novo nome: ")
-        lista_jogadores[int(i_jogador - 1)].mudar_nome(novo_nome)
-
-    elif acao == 2:
-        print("ainda não implementado")
-        input("Aperte ENTER para continuar")
-
-    elif acao == 3:
-        print("Tem certeza que deseja deletar esse jogador?")
-        print("1 - Sim")
-        print("2 - Não")
-        confirm = input("Sua opção: ")
-
-    elif acao == 4:
-        print("ainda não implementado")
-        input("Aperte ENTER para continuar")        
-    
-    else:
-        print("Opção invalida")
-        input("aperte ENTER para continuar")
-        
-    editar_jogador(lista_jogadores)
-'''
 
 def inicio():
     listat = carregar_times()
