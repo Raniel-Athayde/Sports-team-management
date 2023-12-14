@@ -229,8 +229,7 @@ def inicio():
         print("Selecione a opção:")
         print("1 - Verificar times")
         print("2 - Adicionar time")
-        print("3- Remover time")
-        print("4 - Salvar e encerrar")
+        print("3 - Salvar e encerrar")
 
         escolha = input("Sua opção: ")
 
@@ -240,14 +239,21 @@ def inicio():
             listar(listat)
             print("Secione a opção:\n")
             print("1 - Vizualizar time\n")
-            print("2 - Voltar\n")
+            print("2 - Remover time")
+            print("3 - Voltar\n")
             escolha2 = input("Sua opção: ")
+            
             if escolha2 == "1":
                 print("Qual time deseja vizualizar?")
                 escolha3 = input("Escreva o número do time: ")
                 vizualizar_time(listat[int(escolha3) - 1], listat)
+
             elif escolha2 == "2":
+                remover(listat, "time")
+
+            elif escolha2 == "3":
                 pass
+
             else:
                 print("Opção inválida")
 
@@ -256,11 +262,9 @@ def inicio():
             salvar_times(listat)
         
         elif escolha == "3":
-             remover(listat, "time")
-
-        elif escolha == "4":
             salvar_times(listat)
             break
+
         else:
             print("Opção inválida")
             input("Aperte ENTER para continuar")
