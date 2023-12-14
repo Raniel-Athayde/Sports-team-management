@@ -52,8 +52,8 @@ def listar_jogos(lista):
     print("\n")
 
 def remover(lista, item):
-    print("Qual" + item + "você deseja remover?")
-    i_item = input("Escreva o numero do time: ")
+    print("Qual " + item + " você deseja remover?")
+    i_item = input("Escreva o numero do " + item +":" )
     del lista[int(i_item) - 1]
 
 def novo_time(lista_times):
@@ -229,7 +229,8 @@ def inicio():
         print("Selecione a opção:")
         print("1 - Verificar times")
         print("2 - Adicionar time")
-        print("3 - Salvar e encerrar")
+        print("3- Remover time")
+        print("4 - Salvar e encerrar")
 
         escolha = input("Sua opção: ")
 
@@ -253,7 +254,11 @@ def inicio():
         elif escolha == "2":
             novo_time(listat)
             salvar_times(listat)
+        
         elif escolha == "3":
+             remover(listat, "time")
+
+        elif escolha == "4":
             salvar_times(listat)
             break
         else:
